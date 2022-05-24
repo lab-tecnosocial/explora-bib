@@ -1,2 +1,2 @@
 # explora-bib
-Explorador bibliográfico web
+Explorador bibliográfico web hecho con react
