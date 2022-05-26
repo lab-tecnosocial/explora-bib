@@ -62,7 +62,7 @@ export default function Page(props) {
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          Lab TecnoSocial
         </Typography>
         <Typography
           variant="subtitle1"
@@ -70,7 +70,7 @@ export default function Page(props) {
           color="text.secondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          Explorador bibliográfico
         </Typography>
       </Box>
       {/* End footer */}
