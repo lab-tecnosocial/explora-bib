@@ -9,9 +9,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Item from './Item'
 import Search from './Search'
+import dataJson from '../data/bib-urbana.json'
 
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
 
@@ -54,7 +53,16 @@ export default function Page(props) {
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
-            {cards.map((el) => <Item id={el} />)}
+            {dataJson.map((el) => 
+            <Item 
+              id={el.id} 
+              img={el.img} 
+              title={el.titulo} 
+              author={el.autor} 
+              year={el.anio} 
+              publisher={el.editorial_institución} 
+              link={el.url} 
+            />)}
           </Grid>
         </Container>
       </main>

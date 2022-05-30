@@ -19,7 +19,7 @@ function Item(props){
               // 16:9
               pt: '56.25%',
             }}
-            image="https://source.unsplash.com/random"
+            image={props.img}
             alt=""
           />
           <CardContent sx={{ flexGrow: 1 }}>
@@ -37,7 +37,7 @@ function Item(props){
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" href={props.link}>Visitar</Button>
+            <Button size="small" href={props.link} target="_blank">Visitar</Button>
           </CardActions>
         </Card>
       </Grid>
