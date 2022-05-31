@@ -7,41 +7,41 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function Item(props){
-    return (
-        <Grid item key={props.card} xs={12} sm={6} md={4}>
-        <Card
-          sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-        >
-          <CardMedia
-            component="img"
-            sx={{
-              // 16:9
-              pt: '56.25%',
-            }}
-            image={props.img}
-            alt=""
-          />
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2">
-              {props.title}
-            </Typography>
-            <Typography>
-              <b>Autor:</b> {props.author}
-            </Typography>
-            <Typography>
-              <b>Año:</b> {props.year}
-            </Typography>
-            <Typography>
-              <b>Editorial:</b> {props.publisher}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" href={props.link} target="_blank">Visitar</Button>
-          </CardActions>
-        </Card>
-      </Grid>
-    );
+function Item({ id, img, title, author, year, publisher, link }) {
+  return (
+    <Grid item key={id} xs={12} sm={6} md={4}>
+      <Card
+        sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+      >
+        <CardMedia
+          component="img"
+          sx={{
+            // 16:9
+            pt: '56.25%',
+          }}
+          image={img}
+          alt=""
+        />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {title}
+          </Typography>
+          <Typography>
+            <b>Autor:</b> {author}
+          </Typography>
+          <Typography>
+            <b>Año:</b> {year}
+          </Typography>
+          <Typography>
+            <b>Editorial:</b> {publisher}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" href={link} target="_blank">Visitar</Button>
+        </CardActions>
+      </Card>
+    </Grid>
+  );
 }
 
 export default Item;

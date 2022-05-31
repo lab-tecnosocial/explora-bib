@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -14,14 +13,15 @@ import dataJson from '../data/bib-urbana.json'
 
 const theme = createTheme();
 
-export default function Page(props) {
+export default function Page({ title, description }) {
+
   return (
     <ThemeProvider theme={theme}>
       {/* Header */}
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            {props.title}
+            {title}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -43,26 +43,26 @@ export default function Page(props) {
               color="text.primary"
               gutterBottom
             >
-              {props.title}
+              {title}
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              {props.description}
+              {description}
             </Typography>
             <Search />
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
-            {dataJson.map((el) => 
-            <Item 
-              id={el.id} 
-              img={el.img} 
-              title={el.titulo} 
-              author={el.autor} 
-              year={el.anio} 
-              publisher={el.editorial_institución} 
-              link={el.url} 
-            />)}
+            {dataJson.map((el) =>
+              <Item
+                id={el.id}
+                img={el.img}
+                title={el.titulo}
+                author={el.autor}
+                year={el.anio}
+                publisher={el.editorial_institución}
+                link={el.url}
+              />)}
           </Grid>
         </Container>
       </main>
