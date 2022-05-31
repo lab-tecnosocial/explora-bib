@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -14,6 +15,18 @@ import dataJson from '../data/bib-urbana.json'
 const theme = createTheme();
 
 export default function Page({ title, description }) {
+  const [data, setData] = useState(dataJson);
+  const [query, setQuery] = useState('');
+
+  const filterData = (query, data) => {
+    if (!query) {
+      return data;
+    } else {
+      return data.filter((d) => d.titulo.toLowerCase().includes(query));
+    }
+  };
+
+  const dataFilter = filterData(query, data);
 
   return (
     <ThemeProvider theme={theme}>
@@ -48,12 +61,12 @@ export default function Page({ title, description }) {
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               {description}
             </Typography>
-            <Search />
+            <Search query={query} setQuery={setQuery} />
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4}>
-            {dataJson.map((el) =>
+            {data.map((el) =>
               <Item
                 id={el.id}
                 img={el.img}
