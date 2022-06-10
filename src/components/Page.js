@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -15,18 +15,8 @@ import dataJson from '../data/bib-urbana.json'
 const theme = createTheme();
 
 export default function Page({ title, description }) {
-  const [data, setData] = useState(dataJson);
   const [query, setQuery] = useState('');
-
-  const filterData = (query, data) => {
-    if (!query) {
-      return data;
-    } else {
-      return data.filter((d) => d.titulo.toLowerCase().includes(query));
-    }
-  };
-
-  const dataFilter = filterData(query, data);
+  const [mostrar, setMostrar] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,23 +51,29 @@ export default function Page({ title, description }) {
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               {description}
             </Typography>
-            <Search query={query} setQuery={setQuery} />
+            <Search setQuery={setQuery} setMostrar={setMostrar} />
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        {
+          mostrar && (<Container sx={{ py: 8 }} maxWidth="lg">
           <Grid container spacing={4}>
-            {data.map((el) =>
-              <Item
-                id={el.id}
-                img={el.img}
-                title={el.titulo}
-                author={el.autor}
-                year={el.anio}
-                publisher={el.editorial_institución}
-                link={el.url}
-              />)}
+            {dataJson
+              .filter((el) => el.titulo.toLowerCase().includes(query.toLocaleLowerCase()))
+              .map((el) =>
+                <Item
+                  id={el.id}
+                  img={el.img}
+                  title={el.titulo}
+                  author={el.autor}
+                  year={el.anio}
+                  publisher={el.editorial_institución}
+                  link={el.url}
+                />)}
           </Grid>
-        </Container>
+        </Container>)
+
+        }
+        
       </main>
 
       {/* Footer */}
