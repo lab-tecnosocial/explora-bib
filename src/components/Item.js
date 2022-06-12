@@ -17,7 +17,7 @@ function Item({ id, img, title, author, year, publisher, link }) {
           component="img"
           sx={{
             // 16:9
-            pt: '56.25%',
+            // pt: '56.25%',
           }}
           image={img}
           alt=""

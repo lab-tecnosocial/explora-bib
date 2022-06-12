@@ -7,9 +7,10 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Item from './Item'
-import Search from './Search'
-import dataJson from '../data/bib-urbana.json'
+import Item from './Item';
+import Tarjeta from './Tarjeta';
+import Search from './Search';
+import dataJson from '../data/bib-urbana.json';
 
 
 const theme = createTheme();
@@ -60,7 +61,7 @@ export default function Page({ title, description }) {
             {dataJson
               .filter((el) => el.titulo.toLowerCase().includes(query.toLocaleLowerCase()))
               .map((el) =>
-                <Item
+                <Tarjeta
                   id={el.id}
                   img={el.img}
                   title={el.titulo}
