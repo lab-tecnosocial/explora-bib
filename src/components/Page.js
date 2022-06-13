@@ -18,6 +18,7 @@ const theme = createTheme();
 export default function Page({ title, description }) {
   const [query, setQuery] = useState('');
   const [mostrar, setMostrar] = useState(false);
+  const [results, setResults] = useState(0);
 
   return (
     <ThemeProvider theme={theme}>
@@ -69,6 +70,9 @@ export default function Page({ title, description }) {
                   year={el.anio}
                   publisher={el.editorial_institución}
                   link={el.url}
+                  type={el.tipo_doc}
+                  city={el.ciudad}
+                  topics={el.temas}
                 />)}
           </Grid>
         </Container>)
