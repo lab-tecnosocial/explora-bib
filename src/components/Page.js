@@ -11,6 +11,8 @@ import Item from './Item';
 import Tarjeta from './Tarjeta';
 import Search from './Search';
 import dataJson from '../data/bib-urbana.json';
+import ciudad from '../img/ciudad-bolivia.jpeg';
+import Paper from '@mui/material/Paper'
 
 
 const theme = createTheme();
@@ -23,10 +25,10 @@ export default function Page({ title, description }) {
   return (
     <ThemeProvider theme={theme}>
       {/* Header */}
-      <AppBar position="relative">
+      <AppBar position="relative" sx={{bgcolor: 'white'}} >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            {title}
+
           </Typography>
         </Toolbar>
       </AppBar>
@@ -35,7 +37,10 @@ export default function Page({ title, description }) {
       <main>
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ciudad})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
             pt: 8,
             pb: 6,
           }}
@@ -45,40 +50,44 @@ export default function Page({ title, description }) {
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
+              color="primary.contrastText"
               gutterBottom
             >
               {title}
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+            <Typography variant="h5" align="center" color="primary.contrastText" paragraph>
               {description}
             </Typography>
-            <Search setQuery={setQuery} setMostrar={setMostrar} />
           </Container>
         </Box>
+        <Container maxWidth="sm" sx={{mt: 3}}>
+            <Search setQuery={setQuery} setMostrar={setMostrar} />
+        </Container>
         {
           mostrar && (<Container sx={{ py: 8 }} maxWidth="lg">
-          <Grid container spacing={4}>
-            {dataJson
-              .filter((el) => el.titulo.toLowerCase().includes(query.toLocaleLowerCase()))
-              .map((el) =>
-                <Tarjeta
-                  id={el.id}
-                  img={el.img}
-                  title={el.titulo}
-                  author={el.autor}
-                  year={el.anio}
-                  publisher={el.editorial_institución}
-                  link={el.url}
-                  type={el.tipo_doc}
-                  city={el.ciudad}
-                  topics={el.temas}
-                />)}
-          </Grid>
-        </Container>)
+            <Grid container spacing={4}>
+              {dataJson
+                .filter((el) => el.titulo.toLowerCase().includes(query.toLocaleLowerCase()))
+                .map((el) =>
+                  <Tarjeta
+                    id={el.id}
+                    img={el.img}
+                    title={el.titulo}
+                    author={el.autor}
+                    year={el.anio}
+                    publisher={el.editorial_institución}
+                    link={el.url}
+                    type={el.tipo_doc}
+                    city={el.ciudad}
+                    topics={el.temas}
+                    journal={el.nombre_revista_compilacion}
+                    numJournal={el.numero_revista}
+                  />)}
+            </Grid>
+          </Container>)
 
         }
-        
+
       </main>
 
       {/* Footer */}

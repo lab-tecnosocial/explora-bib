@@ -6,8 +6,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
+import upperFirst from 'lodash.upperfirst';
 
-export default function Modal({title, type, city, topics}) {
+export default function Modal({title, type, city, topics, journal, numJournal}) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -31,9 +32,10 @@ export default function Modal({title, type, city, topics}) {
           {title}
         </DialogTitle>
         <DialogContent>
-          <Typography gutterBottom><b>Tipo de item: </b>{type}</Typography>
+          <Typography gutterBottom><b>Tipo de item: </b>{upperFirst(type)}</Typography>
+          {journal && numJournal && (<Typography gutterBottom><b>Revista: </b>{journal + ' ' + numJournal}</Typography>)}
           <Typography gutterBottom><b>Ciudad: </b> {city}</Typography>
-          <Typography gutterBottom><b>Temas: </b> {topics}</Typography>
+          <Typography gutterBottom><b>Temas: </b> {upperFirst(topics.replaceAll(',', ' - '))}</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus>

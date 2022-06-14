@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Modal from './Modal';
 
-function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics }) {
+function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal, numJournal }) {
   return (
     <Grid item key={id} xs={12} md={6}>
       <Card sx={{ display: 'flex' }}>
@@ -23,14 +23,14 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
           </Typography>
           <CardActions>
             {/* <Button size="small" >Detalles</Button> */}
-            <Modal title={title} type={type} city={city} topics={topics}/>
+            <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal}/>
             <Button size="small" href={link} target="_blank">Descargar</Button>
           </CardActions>
         </CardContent>
 
         <CardMedia
           component="img"
-          sx={{ width: 160 }}
+          sx={{ width: '40%', height: '60%', objectFit: 'contain' }}
           image={img}
         />
 
