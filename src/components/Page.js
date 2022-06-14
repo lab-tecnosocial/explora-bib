@@ -113,15 +113,16 @@ export default function Page({ title, description }) {
         <Grid container spacing={6}>
           <Grid item xs={6}>
             <Typography variant="body2" align="center"><b>Datos abiertos</b></Typography>
-            <Typography variant="body2" align="center"><Link href="" target="_blank">BibTex</Link></Typography>
-            <Typography variant="body2" align="center" href="https://docs.google.com/spreadsheets/d/12JtW_QCgC5xUJisGymGyF9IxsZPrkD2bKXJwuPCd_ZI/edit#gid=0" target="_blank"><Link>Google Sheets</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana" target="_blank">BibTex</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://docs.google.com/spreadsheets/d/12JtW_QCgC5xUJisGymGyF9IxsZPrkD2bKXJwuPCd_ZI/edit#gid=0" target="_blank">Google Sheets</Link></Typography>
             </Grid>
           <Grid item xs={6}>
             <Typography variant="body2" align="center"><b>Contribuye</b></Typography>
-            <Typography variant="body2" align="center"><Link href="" target="_blank">Por GitHub</Link></Typography>
-            <Typography variant="body2" align="center"><Link href="" target="_blank">Por Google Forms</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana" target="_blank">Por GitHub</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://docs.google.com/forms/d/e/1FAIpQLSepvVhuofrXn4bTg0kCgbsBj_vnfN3FdJrmCr6IdatBR21x0g/viewform" target="_blank">Por Google Forms</Link></Typography>
             </Grid>
-          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo de: xxx por xxx</Typography></Grid>
+          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo "Una exploración bibliométrica y digital de los estudios urbanos en Bolivia" de Valeria Peredo (<Link href="https://www.academia.edu/81465997/Una_exploraci%C3%B3n_bibliom%C3%A9trica_y_digital_de_los_estudios_urbanos_en_Bolivia" target="_blank">enlace</Link>)
+</Typography></Grid>
         </Grid>
       </Box>
       {/* End footer */}
