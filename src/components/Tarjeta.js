@@ -16,15 +16,15 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
             {title}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">
-            {year + ' - ' + publisher}
+            {year + ' - ' + publisher.replaceAll(',', ', ')}
           </Typography>
           <Typography variant="subtitle1" paragraph>
-            {author}
+            {author.replaceAll(',', ', ')}
           </Typography>
-          <CardActions>
+          <CardActions sx={{display: 'flex', justifyContent: 'space-around'}}>
             {/* <Button size="small" >Detalles</Button> */}
             <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal}/>
-            <Button size="small" href={link} target="_blank">Descargar</Button>
+            <Button size="small" href={link} target="_blank">Ver item</Button>
           </CardActions>
         </CardContent>
 
