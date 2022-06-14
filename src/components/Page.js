@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -12,6 +11,8 @@ import Tarjeta from './Tarjeta';
 import Search from './Search';
 import dataJson from '../data/bib-urbana.json';
 import ciudad from '../img/ciudad-bolivia.jpeg';
+import logoLab from '../img/foto-perfil.png'
+import Link from '@mui/material/Link'
 
 const theme = createTheme();
 
@@ -28,13 +29,13 @@ export default function Page({ title, description }) {
   return (
     <ThemeProvider theme={theme}>
       {/* Header */}
-      <AppBar position="relative" sx={{ bgcolor: 'white' }} >
+      {/* <AppBar position="relative" sx={{ bgcolor: 'white' }} >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
 
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       {/* End Header */}
 
       <main>
@@ -93,17 +94,35 @@ export default function Page({ title, description }) {
 
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
+        {/* <Typography variant="h6" align="center" gutterBottom>
           Lab TecnoSocial
-        </Typography>
+        </Typography> */}
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
+          <img src={logoLab} width="120px" alt="Logo Lab"></img>
+          </Box>
         <Typography
           variant="subtitle1"
           align="center"
-          color="text.secondary"
           component="p"
         >
           Explorador bibliográfico
         </Typography>
+        <Grid container spacing={6}>
+          <Grid item xs={6}>
+            <Typography variant="body2" align="center"><b>Datos abiertos</b></Typography>
+            <Typography variant="body2" align="center"><Link href="" target="_blank">BibTex</Link></Typography>
+            <Typography variant="body2" align="center" href="https://docs.google.com/spreadsheets/d/12JtW_QCgC5xUJisGymGyF9IxsZPrkD2bKXJwuPCd_ZI/edit#gid=0" target="_blank"><Link>Google Sheets</Link></Typography>
+            </Grid>
+          <Grid item xs={6}>
+            <Typography variant="body2" align="center"><b>Contribuye</b></Typography>
+            <Typography variant="body2" align="center"><Link href="" target="_blank">Por GitHub</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="" target="_blank">Por Google Forms</Link></Typography>
+            </Grid>
+          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo de: xxx por xxx</Typography></Grid>
+        </Grid>
       </Box>
       {/* End footer */}
     </ThemeProvider>
