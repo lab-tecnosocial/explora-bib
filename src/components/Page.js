@@ -12,20 +12,23 @@ import Tarjeta from './Tarjeta';
 import Search from './Search';
 import dataJson from '../data/bib-urbana.json';
 import ciudad from '../img/ciudad-bolivia.jpeg';
-import Paper from '@mui/material/Paper'
-
 
 const theme = createTheme();
 
 export default function Page({ title, description }) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('null');
   const [mostrar, setMostrar] = useState(false);
-  const [results, setResults] = useState(0);
+
+  let dataFilter = dataJson
+    .filter(
+      el => el.titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query.toLocaleLowerCase()) ||
+        el.temas.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query.toLocaleLowerCase())
+    );
 
   return (
     <ThemeProvider theme={theme}>
       {/* Header */}
-      <AppBar position="relative" sx={{bgcolor: 'white'}} >
+      <AppBar position="relative" sx={{ bgcolor: 'white' }} >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
 
@@ -60,15 +63,13 @@ export default function Page({ title, description }) {
             </Typography>
           </Container>
         </Box>
-        <Container maxWidth="sm" sx={{mt: 3}}>
-            <Search setQuery={setQuery} setMostrar={setMostrar} />
+        <Container maxWidth="sm" sx={{ mt: 3 }}>
+          <Search setQuery={setQuery} setMostrar={setMostrar} nRes={dataFilter.length} />
         </Container>
         {
           mostrar && (<Container sx={{ py: 8 }} maxWidth="lg">
             <Grid container spacing={4}>
-              {dataJson
-                .filter((el) => el.titulo.toLowerCase().includes(query.toLocaleLowerCase()))
-                .map((el) =>
+              {dataFilter.map((el) =>
                   <Tarjeta
                     id={el.id}
                     img={el.img}
