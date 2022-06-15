@@ -7,26 +7,32 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Modal from './Modal';
 import BibView from './BibView';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
 
 
 function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal, numJournal }) {
   return (
     <Grid item key={id} xs={12} md={6}>
-      <Card sx={{ display: 'flex' }}>
+      <Card sx={{ display: 'flex'}}>
         <CardContent sx={{ flex: 1 }}>
           <Typography component="h2" variant="h6">
             {title}
           </Typography>
+         
           <Typography variant="subtitle1" color="text.secondary">
             {year + ' - ' + publisher.replaceAll(',', ', ')}
           </Typography>
           <Typography variant="subtitle1" paragraph>
             {author.replaceAll(',', ', ')}
           </Typography>
-          <CardActions sx={{display: 'flex', justifyContent: 'space-around'}}>
-            {/* <Button size="small" >Detalles</Button> */}
-            <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal}/>
-            <BibView type={type} author={author} title={title} year={year} publisher={publisher}/>
+          <Stack direction="row" spacing={1} sx={{display: 'flex', justifyContent: 'center'}}>
+            {topics.split(',').map(e => <Chip label={e} color="primary" size="small" variant="outlined"></Chip>)}
+          </Stack>
+          <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal} />
+            <BibView type={type} author={author} title={title} year={year} publisher={publisher} />
             <Button size="small" href={link} target="_blank">Visitar</Button>
           </CardActions>
         </CardContent>
