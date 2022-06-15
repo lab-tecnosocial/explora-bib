@@ -93,9 +93,6 @@ export default function Page({ title, description }) {
 
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        {/* <Typography variant="h6" align="center" gutterBottom>
-          Lab TecnoSocial
-        </Typography> */}
         <Box
           display="flex"
           justifyContent="center"
@@ -112,7 +109,7 @@ export default function Page({ title, description }) {
         <Grid container spacing={6}>
           <Grid item xs={6}>
             <Typography variant="body2" align="center"><b>Datos abiertos</b></Typography>
-            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana/blob/main/bib-urbana.bib" target="_blank">BibTex</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana/blob/main/bib-urbana.bib" target="_blank">BibTeX</Link></Typography>
             <Typography variant="body2" align="center"><Link href="https://docs.google.com/spreadsheets/d/12JtW_QCgC5xUJisGymGyF9IxsZPrkD2bKXJwuPCd_ZI/edit#gid=0" target="_blank">Google Sheets</Link></Typography>
             </Grid>
           <Grid item xs={6}>

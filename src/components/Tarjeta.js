@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import Modal from './Modal';
 import BibView from './BibView';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 
 

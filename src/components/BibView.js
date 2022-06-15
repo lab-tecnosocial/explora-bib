@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -6,7 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
-import upperFirst from 'lodash.upperfirst';
+import IconButton from '@mui/material/IconButton';
+import DataObjectIcon from '@mui/icons-material/DataObject';
 
 export default function BibView({type, author, title, year, publisher}) {
   const [open, setOpen] = useState(false);
@@ -34,18 +34,21 @@ export default function BibView({type, author, title, year, publisher}) {
 
   return (
     <div>
-      <Button size="small" onClick={handleClickOpen}>
+      {/* <Button size="small" >
         BibTex
-      </Button>
+      </Button> */}
+      <IconButton size="small" onClick={handleClickOpen} color="primary">
+        <DataObjectIcon fontSize="small" />
+      </IconButton>
       <Dialog
         open={open}
         onClose={handleClose}
       >
         <DialogTitle id="alert-dialog-title">
-          Entrada BibTex
+          Entrada BibTeX
         </DialogTitle>
         <DialogContent dividers sx={{whiteSpace: 'pre'}}>
-          <code style={{fontSize: '0.9em'}}>
+          <code style={{fontSize: '0.8em'}}>
           {formatBib(type, author, title, year, publisher)}
           </code>          
         </DialogContent>
