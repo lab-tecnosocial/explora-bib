@@ -6,13 +6,12 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Item from './Item';
 import Tarjeta from './Tarjeta';
 import Search from './Search';
 import dataJson from '../data/bib-urbana.json';
 import ciudad from '../img/ciudad-bolivia.jpeg';
-import logoLab from '../img/foto-perfil.png'
-import Link from '@mui/material/Link'
+import logoLab from '../img/foto-perfil.png';
+import Link from '@mui/material/Link';
 
 const theme = createTheme();
 
@@ -113,7 +112,7 @@ export default function Page({ title, description }) {
         <Grid container spacing={6}>
           <Grid item xs={6}>
             <Typography variant="body2" align="center"><b>Datos abiertos</b></Typography>
-            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana" target="_blank">BibTex</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana/blob/main/bib-urbana.bib" target="_blank">BibTex</Link></Typography>
             <Typography variant="body2" align="center"><Link href="https://docs.google.com/spreadsheets/d/12JtW_QCgC5xUJisGymGyF9IxsZPrkD2bKXJwuPCd_ZI/edit#gid=0" target="_blank">Google Sheets</Link></Typography>
             </Grid>
           <Grid item xs={6}>
@@ -121,7 +120,7 @@ export default function Page({ title, description }) {
             <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana" target="_blank">Por GitHub</Link></Typography>
             <Typography variant="body2" align="center"><Link href="https://docs.google.com/forms/d/e/1FAIpQLSepvVhuofrXn4bTg0kCgbsBj_vnfN3FdJrmCr6IdatBR21x0g/viewform" target="_blank">Por Google Forms</Link></Typography>
             </Grid>
-          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo "Una exploración bibliométrica y digital de los estudios urbanos en Bolivia" de Valeria Peredo (<Link href="https://www.academia.edu/81465997/Una_exploraci%C3%B3n_bibliom%C3%A9trica_y_digital_de_los_estudios_urbanos_en_Bolivia" target="_blank">enlace</Link>)
+          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo de <Link href="https://www.academia.edu/81465997/Una_exploraci%C3%B3n_bibliom%C3%A9trica_y_digital_de_los_estudios_urbanos_en_Bolivia" target="_blank" color="text.secondary">"Una exploración bibliométrica y digital de los estudios urbanos en Bolivia"</Link> de Valeria Peredo.
 </Typography></Grid>
         </Grid>
       </Box>

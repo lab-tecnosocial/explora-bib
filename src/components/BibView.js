@@ -8,9 +8,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import upperFirst from 'lodash.upperfirst';
 
-
-export default function Modal({title, type, city, topics, journal, numJournal}) {
+export default function BibView({type, author, title, year, publisher}) {
   const [open, setOpen] = useState(false);
+
+  const formatBib = function(type, author, title, year, publisher){
+    let bibtex = '';
+    if(type.includes(['libro', 'informe', 'cartilla'])) bibtex += '@book';
+    else bibtex += '@article';
+  bibtex += `{${author.split(' ')[0]}${year},
+  author = "${author}",
+  title = "${title}",
+  year = ${year},
+  publisher = "${publisher}"
+}`
+    return bibtex;
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,20 +35,19 @@ export default function Modal({title, type, city, topics, journal, numJournal}) 
   return (
     <div>
       <Button size="small" onClick={handleClickOpen}>
-        Detalles
+        BibTex
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
       >
         <DialogTitle id="alert-dialog-title">
-          {title}
+          Entrada BibTex
         </DialogTitle>
-        <DialogContent>
-          <Typography gutterBottom><b>Tipo de item: </b>{upperFirst(type)}</Typography>
-          {journal && numJournal && (<Typography gutterBottom><b>Revista: </b>{journal + ' ' + numJournal}</Typography>)}
-          <Typography gutterBottom><b>Ciudad: </b> {city}</Typography>
-          <Typography gutterBottom><b>Temas: </b> {upperFirst(topics.replaceAll(',', ' - '))}</Typography>
+        <DialogContent dividers sx={{whiteSpace: 'pre'}}>
+          <code style={{fontSize: '0.9em'}}>
+          {formatBib(type, author, title, year, publisher)}
+          </code>          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus>

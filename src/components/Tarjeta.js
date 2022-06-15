@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Modal from './Modal';
+import BibView from './BibView';
+
 
 function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal, numJournal }) {
   return (
@@ -24,7 +26,8 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
           <CardActions sx={{display: 'flex', justifyContent: 'space-around'}}>
             {/* <Button size="small" >Detalles</Button> */}
             <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal}/>
-            <Button size="small" href={link} target="_blank">Ver item</Button>
+            <BibView type={type} author={author} title={title} year={year} publisher={publisher}/>
+            <Button size="small" href={link} target="_blank">Visitar</Button>
           </CardActions>
         </CardContent>
 
