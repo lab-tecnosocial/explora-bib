@@ -8,12 +8,20 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Tarjeta from './Tarjeta';
 import Search from './Search';
-import dataJson from '../data/bib-urbana.json';
-import ciudad from '../img/ciudad-bolivia.jpeg';
+import dataJson from '../data/bib-digital.json';
+import conectividad from '../img/conectividad.jpeg';
 import logoLab from '../img/foto-perfil.png';
 import Link from '@mui/material/Link';
+import { green, teal, lightBlue } from '@mui/material/colors';
 
-const theme = createTheme();
+
+const theme = createTheme(
+  {
+    palette: {
+      primary: green
+    },
+  }
+);
 
 export default function Page({ title, description }) {
   const [query, setQuery] = useState('null');
@@ -40,7 +48,7 @@ export default function Page({ title, description }) {
       <main>
         <Box
           sx={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ciudad})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${conectividad})`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
@@ -53,12 +61,12 @@ export default function Page({ title, description }) {
               component="h1"
               variant="h2"
               align="center"
-              color="primary.contrastText"
+              color="common.white"
               gutterBottom
             >
               {title}
             </Typography>
-            <Typography variant="h5" align="center" color="primary.contrastText" paragraph>
+            <Typography variant="h5" align="center" color="common.white" paragraph>
               {description}
             </Typography>
           </Container>
@@ -76,13 +84,12 @@ export default function Page({ title, description }) {
                     title={el.titulo}
                     author={el.autor}
                     year={el.anio}
-                    publisher={el.editorial_institución}
+                    publisher={el.editorial_institucion}
                     link={el.url}
                     type={el.tipo_doc}
                     city={el.ciudad}
                     topics={el.temas}
                     journal={el.nombre_revista_compilacion}
-                    numJournal={el.numero_revista}
                   />)}
             </Grid>
           </Container>)
@@ -109,15 +116,15 @@ export default function Page({ title, description }) {
         <Grid container spacing={6}>
           <Grid item xs={6}>
             <Typography variant="body2" align="center"><b>Datos abiertos</b></Typography>
-            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana/blob/main/bib-urbana.bib" target="_blank">BibTeX</Link></Typography>
-            <Typography variant="body2" align="center"><Link href="https://docs.google.com/spreadsheets/d/12JtW_QCgC5xUJisGymGyF9IxsZPrkD2bKXJwuPCd_ZI/edit#gid=0" target="_blank">Google Sheets</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-bibdigital/blob/main/bib-digital.bib" target="_blank">BibTeX</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://docs.google.com/spreadsheets/d/103_8pRtRd5JQj71NfNn__ITdzs66hbRW5PnOh7QvZqA/edit?usp=sharing" target="_blank">Google Sheets</Link></Typography>
             </Grid>
           <Grid item xs={6}>
             <Typography variant="body2" align="center"><b>Contribuye</b></Typography>
-            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-biburbana" target="_blank">Por GitHub</Link></Typography>
-            <Typography variant="body2" align="center"><Link href="https://docs.google.com/forms/d/e/1FAIpQLSepvVhuofrXn4bTg0kCgbsBj_vnfN3FdJrmCr6IdatBR21x0g/viewform" target="_blank">Por Google Forms</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://github.com/lab-tecnosocial/datos-bibdigital" target="_blank">Por GitHub</Link></Typography>
+            <Typography variant="body2" align="center"><Link href="https://forms.gle/pZh8C2W61JURzfBFA" target="_blank">Por Google Forms</Link></Typography>
             </Grid>
-          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo de <Link href="https://www.academia.edu/81465997/Una_exploraci%C3%B3n_bibliom%C3%A9trica_y_digital_de_los_estudios_urbanos_en_Bolivia" target="_blank" color="text.secondary">"Una exploración bibliométrica y digital de los estudios urbanos en Bolivia"</Link> de Valeria Peredo.
+          <Grid item xs={12}><Typography variant="body2" align="center" color="text.secondary">Datos provenientes del artículo de <Link href="http://www.scielo.org.bo/scielo.php?pid=S0040-29152022000100169&script=sci_arttext" target="_blank" color="text.secondary">"Estudios sociales de digitalización en Bolivia, 2000-2020"</Link> de Alex Ojeda Copa.
 </Typography></Grid>
         </Grid>
       </Box>
