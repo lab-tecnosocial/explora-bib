@@ -87,9 +87,10 @@ export default function Page({ title, description }) {
                     publisher={el.editorial_institucion}
                     link={el.url}
                     type={el.tipo_doc}
-                    city={el.ciudad}
+                    place={el.lugar}
                     topics={el.temas}
                     journal={el.nombre_revista_compilacion}
+                    numJournal={el.numero_revista}
                   />)}
             </Grid>
           </Container>)

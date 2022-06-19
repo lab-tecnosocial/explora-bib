@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 
 
-function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal}) {
+function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal, numJournal, place}) {
   return (
     <Grid item key={id} xs={12} md={6}>
       <Card sx={{ display: 'flex'}}>
@@ -21,7 +21,7 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
           </Typography>
          
           <Typography variant="subtitle1" color="text.secondary">
-            {year + ' - ' + (publisher || journal)}
+            {year + ' - ' + (publisher || (journal + ' ' + numJournal))}
           </Typography>
           <Typography variant="subtitle1" paragraph>
             {author}
@@ -30,8 +30,8 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
             {topics.split(',').map(e => <Chip label={e} color="primary" size="small" variant="outlined"></Chip>)}
           </Stack>
           <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Modal title={title} type={type} city={city} topics={topics} journal={journal} />
-            <BibView type={type} author={author} title={title} year={year} publisher={publisher} journal={journal} />
+            <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal} place={place} />
+            <BibView type={type} author={author} title={title} year={year} publisher={publisher} journal={journal} numJournal={numJournal} />
             <Button size="small" href={link} target="_blank">Visitar</Button>
           </CardActions>
         </CardContent>

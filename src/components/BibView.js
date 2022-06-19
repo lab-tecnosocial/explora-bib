@@ -8,19 +8,28 @@ import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 
-export default function BibView({type, author, title, year, publisher, journal}) {
+export default function BibView({type, author, title, year, publisher, journal, numJournal}) {
   const [open, setOpen] = useState(false);
 
-  const formatBib = function(type, author, title, year, publisher){
+  const formatBib = function(type, author, title, year, publisher, journal, numJournal){
     let bibtex = '';
     if(type.includes(['book'])) bibtex += '@book';
     else bibtex += '@article';
   bibtex += `{${author.split(', ')[0]}${year},
   author = "${author}",
   title = "${title}",
-  year = ${year},
+  year = ${year},`
+  if(type.includes(['journalArticle'])) {
+    bibtex += `
+  journal = "${journal}",
+  number = ${numJournal}
+  }`;
+  }
+  else {
+    bibtex += `
   publisher = "${publisher}"
-}`
+  }`
+  }
     return bibtex;
   }
 
@@ -49,7 +58,7 @@ export default function BibView({type, author, title, year, publisher, journal})
         </DialogTitle>
         <DialogContent dividers sx={{whiteSpace: 'pre'}}>
           <code style={{fontSize: '0.8em'}}>
-          {formatBib(type, author, title, year, publisher || journal)}
+          {formatBib(type, author, title, year, publisher, journal, numJournal)}
           </code>          
         </DialogContent>
         <DialogActions>

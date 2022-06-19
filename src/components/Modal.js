@@ -9,7 +9,7 @@ import { useState } from 'react';
 import upperFirst from 'lodash.upperfirst';
 
 
-export default function Modal({title, type, city, topics, journal }) {
+export default function Modal({title, type, place, topics, journal, numJournal }) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -34,8 +34,9 @@ export default function Modal({title, type, city, topics, journal }) {
         </DialogTitle>
         <DialogContent>
           <Typography gutterBottom><b>Tipo de item: </b>{upperFirst(type)}</Typography>
-          {journal && <Typography gutterBottom><b>En: </b> {journal}</Typography>}
+          {journal && <Typography gutterBottom><b>En: </b> {journal + ' ' +  numJournal}</Typography>}
           <Typography gutterBottom><b>Temas: </b> {upperFirst(topics.replaceAll(',', ' - '))}</Typography>
+          {place && <Typography gutterBottom><b>Lugar: </b> {place}</Typography>}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus>
