@@ -25,10 +25,10 @@ export default function BibView({type, author, title, year, place, publisher, jo
   } else {
     bibtex += `
   journal = "${journal}",
-  number = ${numJournal},
-  `
+  number = ${numJournal},`
   }
-  bibtex += `url = "${link}",
+  bibtex += `
+  url = "${link}",
   keywords = "${topics}"
 }`;
     return bibtex;
