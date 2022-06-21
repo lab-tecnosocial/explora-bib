@@ -13,7 +13,7 @@ import Chip from '@mui/material/Chip';
 
 function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal, numJournal, place}) {
   return (
-    <Grid item key={id} xs={12} md={6}>
+    <Grid item key={id.toString()} xs={12} md={6}>
       <Card sx={{ display: 'flex'}}>
         <CardContent sx={{ flex: 1 }}>
           <Typography component="h2" variant="h6">
@@ -31,7 +31,7 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
           </Stack>
           <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
             <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal} place={place} />
-            <BibView type={type} author={author} title={title} year={year} publisher={publisher} journal={journal} numJournal={numJournal} />
+            <BibView type={type} author={author} title={title} year={year} publisher={publisher} journal={journal} numJournal={numJournal} place={place} link={link} topics={topics}/>
             <Button size="small" href={link} target="_blank">Visitar</Button>
           </CardActions>
         </CardContent>

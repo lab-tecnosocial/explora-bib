@@ -8,28 +8,29 @@ import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 
-export default function BibView({type, author, title, year, publisher, journal, numJournal}) {
+export default function BibView({type, author, title, year, place, publisher, journal, numJournal, link, topics}) {
   const [open, setOpen] = useState(false);
 
-  const formatBib = function(type, author, title, year, publisher, journal, numJournal){
+  const formatBib = function(type, author, title, year, place, publisher, journal, numJournal, link, topics){
     let bibtex = '';
-    if(type.includes(['book'])) bibtex += '@book';
-    else bibtex += '@article';
-  bibtex += `{${author.split(', ')[0]}${year},
-  author = "${author}",
+    ['book', 'bookSection', 'report'].includes(type) ? bibtex += '@book' : bibtex += '@article';
+  bibtex += `{${author.split(', ')[0].toLowerCase()}${year},
   title = "${title}",
-  year = ${year},`
-  if(type.includes(['journalArticle'])) {
+  author = "${author}",
+  year = ${year},`;
+  if(['book', 'bookSection', 'report'].includes(type)) {
+    bibtex += `
+  place = "${place}",
+  publisher = "${publisher}",`;
+  } else {
     bibtex += `
   journal = "${journal}",
-  number = ${numJournal}
-  }`;
+  number = ${numJournal},
+  `
   }
-  else {
-    bibtex += `
-  publisher = "${publisher}"
-  }`
-  }
+  bibtex += `url = "${link}",
+  keywords = "${topics}"
+}`;
     return bibtex;
   }
 
@@ -58,7 +59,7 @@ export default function BibView({type, author, title, year, publisher, journal, 
         </DialogTitle>
         <DialogContent dividers sx={{whiteSpace: 'pre'}}>
           <code style={{fontSize: '0.8em'}}>
-          {formatBib(type, author, title, year, publisher, journal, numJournal)}
+          {formatBib(type, author, title, year, place,publisher, journal, numJournal, link, topics)}
           </code>          
         </DialogContent>
         <DialogActions>
