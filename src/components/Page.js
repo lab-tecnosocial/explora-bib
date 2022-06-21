@@ -80,6 +80,7 @@ export default function Page({ title, description }) {
                     link={el.url}
                     type={el.tipo_doc}
                     city={el.ciudad}
+                    place={el.departamento}
                     topics={el.temas}
                     journal={el.nombre_revista_compilacion}
                     numJournal={el.numero_revista}

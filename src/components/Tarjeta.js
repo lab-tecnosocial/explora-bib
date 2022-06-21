@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 
 
-function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, journal, numJournal }) {
+function Tarjeta({ id, img, title, author, year, publisher, link, type, city, topics, place, journal, numJournal }) {
   return (
     <Grid item key={id} xs={12} md={6}>
       <Card sx={{ display: 'flex'}}>
@@ -31,7 +31,7 @@ function Tarjeta({ id, img, title, author, year, publisher, link, type, city, to
           </Stack>
           <CardActions sx={{ display: 'flex', justifyContent: 'space-around' }}>
             <Modal title={title} type={type} city={city} topics={topics} journal={journal} numJournal={numJournal} />
-            <BibView type={type} author={author} title={title} year={year} publisher={publisher} />
+            <BibView type={type} author={author} title={title} year={year} publisher={publisher} place={place} journal={journal} numJournal={numJournal} link={link} topics={topics}/>
             <Button size="small" href={link} target="_blank">Visitar</Button>
           </CardActions>
         </CardContent>
