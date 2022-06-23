@@ -12,6 +12,7 @@ import dataJson from '../data/bib-urbana.json';
 import ciudad from '../img/ciudad-bolivia.jpeg';
 import logoLab from '../img/foto-perfil.png';
 import Link from '@mui/material/Link';
+import GraphView from './GraphView';
 
 const theme = createTheme();
 
@@ -65,6 +66,8 @@ export default function Page({ title, description }) {
         </Box>
         <Container maxWidth="sm" sx={{ mt: 3 }}>
           <Search setQuery={setQuery} setMostrar={setMostrar} nRes={dataFilter.length} />
+          {mostrar && <GraphView data={dataFilter}/>}
+
         </Container>
         {
           mostrar && (<Container sx={{ py: 8 }} maxWidth="lg">
