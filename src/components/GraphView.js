@@ -41,25 +41,27 @@ const GraphView = ({ data }) => {
             y: Math.random(),
             size: 5,
             label: el.titulo,
-            color: '#f00'
+            color: '#727EE0'
         });
         el.temas.split(',').forEach((tema) => {
             graph.mergeNode(tema, {
                 x: Math.random(),
                 y: Math.random(),
-                size: 10,
+                size: 15,
                 label: tema,
-                color: '#0f0'
+                color: '#FA4F40'
             });
             graph.mergeEdge(tema, el.id, {
-                color: '#00f'
+                color: '#FA4F40',
+                size: 3
             })
 
         });
         let comb = combinations(el.temas.split(','));
         comb.forEach((c) => {
             graph.mergeEdge(c[0], c[1], {
-                color: '#00f'
+                color: '#727EE0',
+                size: 5
             })
         });
 
